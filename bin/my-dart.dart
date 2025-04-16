@@ -1,5 +1,6 @@
 #! /usr/bin/env -S dart
 import 'dart:core';
+import 'dart:io' as io;
 import 'package:misc/misc.dart' as misc;
 import 'package:args/args.dart' as args;
 
@@ -60,4 +61,5 @@ void run(args.ArgResults $commandResults) {
   misc.setCwd($cwd);
   int $exitCode = misc.command('dart', $commandResults.rest.toList());
   misc.echo($exitCode, '\$exitCode');
+  io.exit($exitCode);
 }
