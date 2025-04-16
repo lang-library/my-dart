@@ -58,5 +58,6 @@ void run(args.ArgResults $commandResults) {
   misc.setCwd($projDir);
   misc.tryCommand('dart', ['pub', 'get']);
   misc.setCwd($cwd);
-  misc.tryCommand('dart', $commandResults.rest.toList());
+  int $exitCode = misc.command('dart', $commandResults.rest.toList());
+  misc.echo($exitCode, '\$exitCode');
 }
