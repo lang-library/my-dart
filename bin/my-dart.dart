@@ -52,7 +52,8 @@ void run(args.ArgResults $commandResults) {
   //misc.echo($filePath, '\$fileName');
   $filePath = misc.pathFullName($filePath);
   //misc.echo($filePath, '\$fileName');
-  String $projDir = misc.pathDirectoryName(misc.pathDirectoryName($filePath));
+  //String $projDir = misc.pathDirectoryName(misc.pathDirectoryName($filePath));
+  String $projDir = misc.pathDirectoryName($filePath);
   //misc.echo($projDir, '\$projDir');
   String $cwd = misc.getCwd();
   //misc.echo($cwd, '\$cwd');
