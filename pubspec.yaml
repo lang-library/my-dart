@@ -14,7 +14,7 @@ dependencies:
   misc:
     git:
       url: https://github.com/lang-library/dart-misc
-      ref: 2025.0416.1917
+      ref: 2025.0417.0705
   embed_annotation: ^1.2.2
   logger: ^2.5.0
 
