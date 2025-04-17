@@ -4,22 +4,25 @@ version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: ^3.8.0
+  sdk: ^3.7.2
 
 dependencies:
   args: ^2.5.0
   ffi: ^2.1.4
   path: ^1.9.1
   win32: ^5.12.0
+  embed_annotation: ^1.2.2
+  logger: ^2.5.0
+  output: ^1.0.0
+  sys: ^0.0.1
+  winsys: ^0.0.1
   misc:
     git:
       url: https://github.com/lang-library/dart-misc
-      ref: 2025.0417.0727
-  embed_annotation: ^1.2.2
-  logger: ^2.5.0
+      ref: 2025.0418.0319
 
 dev_dependencies:
   build_runner: ^2.4.15
   embed: ^1.4.1
-  lints: ^6.0.0
-  test: ^1.24.0
+  lints: ^5.1.1
+  test: ^1.25.15

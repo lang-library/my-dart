@@ -1,12 +1,14 @@
-#! /usr/bin/env -S dart
 import 'dart:core';
 import 'dart:io' as io;
+import 'package:output/output.dart';
+import 'package:sys/sys.dart' as sys;
+import 'package:winsys/winsys.dart' as winsys;
 import 'package:misc/misc.dart' as misc;
 import 'package:args/args.dart' as args;
 
 // 【Dart】コマンドライン引数解析ライブラリargsを試す https://zenn.dev/slowhand/articles/7ca7a2250b65a3
 void main(List<String> $args) async {
-  //misc.dump(misc.isInDebugMode, 'isInDebugMode');
+  //dump(misc.isInDebugMode, 'isInDebugMode');
   if (misc.isInDebugMode) {
     $args = [
       'run',
@@ -19,7 +21,6 @@ void main(List<String> $args) async {
     //$args = ['run', r'D:\home11\dart\hello\bin\my.api-call.dart', 'abc'];
     //$args = ['run'];
   }
-  //misc.dump($args, '\$args');
   try {
     var $parser = args.ArgParser();
     var $command = $parser.addCommand('run');
@@ -36,31 +37,23 @@ void main(List<String> $args) async {
         }
     }
   } catch ($e, $stacktrace) {
-    misc.dump($e, 'Exception');
-    misc.dump($stacktrace, 'Stacktrace');
+    dump($e, 'Exception');
+    dump($stacktrace, 'Stacktrace');
   }
 }
 
 void run(args.ArgResults $commandResults) {
-  //misc.echo($commandResults.name, 'command name');
-  //misc.echo($commandResults['all'], "\$commandResults['all']");
-  //misc.echo($commandResults.rest, '\$commandResults.rest');
   if ($commandResults.rest.isEmpty) {
     throw 'File name count is ${$commandResults.rest.length}: ${$commandResults.rest}';
   }
   String $filePath = $commandResults.rest[0];
-  //misc.echo($filePath, '\$fileName');
-  $filePath = misc.pathFullName($filePath);
-  //misc.echo($filePath, '\$fileName');
-  //String $projDir = misc.pathDirectoryName(misc.pathDirectoryName($filePath));
-  String $projDir = misc.pathDirectoryName($filePath);
-  //misc.echo($projDir, '\$projDir');
-  String $cwd = misc.getCwd();
-  //misc.echo($cwd, '\$cwd');
-  misc.setCwd($projDir);
-  misc.tryCommand('dart', ['pub', 'get']);
-  misc.setCwd($cwd);
-  int $exitCode = misc.command('dart', $commandResults.rest.toList());
-  misc.echo($exitCode, '\$exitCode');
+  $filePath = sys.pathFullName($filePath);
+  String $projDir = sys.pathDirectoryName($filePath);
+  String $cwd = sys.getCwd();
+  sys.setCwd($projDir);
+  winsys.tryCommand('dart', ['pub', 'get']);
+  sys.setCwd($cwd);
+  int $exitCode = winsys.command('dart', $commandResults.rest.toList());
+  echo($exitCode, '\$exitCode');
   io.exit($exitCode);
 }
