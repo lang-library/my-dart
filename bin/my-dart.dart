@@ -3,13 +3,12 @@ import 'dart:io' as io;
 import 'package:output/output.dart';
 import 'package:sys/sys.dart' as sys;
 import 'package:winsys/winsys.dart' as winsys;
-import 'package:misc/misc.dart' as misc;
 import 'package:args/args.dart' as args;
 
 // 【Dart】コマンドライン引数解析ライブラリargsを試す https://zenn.dev/slowhand/articles/7ca7a2250b65a3
 void main(List<String> $args) async {
   //dump(misc.isInDebugMode, 'isInDebugMode');
-  if (misc.isInDebugMode) {
+  if (sys.isInDebugMode) {
     $args = [
       'run',
       r'D:\home11\dart\hello\bin\my.api-call.dart',
