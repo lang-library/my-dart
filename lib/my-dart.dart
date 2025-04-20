@@ -50,17 +50,15 @@ void run(args.ArgResults $commandResults) {
   String $projDir = sys.pathDirectoryName($filePath);
   String $cwd = sys.getCwd();
   sys.setCwd($projDir);
-
-  dump($projDir, r'$projDir');
-  List<String> generatedFiles = sys.pathFiles('.');
+  //dump($projDir, r'$projDir');
+  List<String> $generatedFiles = sys.pathFiles('.');
   //dump(generatedFiles, 'generatedFiles');
-  generatedFiles = generatedFiles.where(($x) => $x.endsWith('.g.dart')).toList();
-  dump(generatedFiles, 'generatedFiles');
-
+  $generatedFiles = $generatedFiles.where(($x) => $x.endsWith('.g.dart')).toList();
+  //dump(generatedFiles, 'generatedFiles');
   sys.setCwd(sys.pathDirectoryName($projDir));
   winsys.tryCommand('dart', ['pub', 'get']);
-  for (int i=0; i<generatedFiles.length; i++) {
-    io.File(generatedFiles[i]).deleteSync();
+  for (int $i=0; $i<$generatedFiles.length; $i++) {
+    io.File($generatedFiles[$i]).deleteSync();
   }
   winsys.tryCommand('dart', ['run', 'build_runner', 'build']);
   sys.setCwd($cwd);
