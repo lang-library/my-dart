@@ -47,7 +47,7 @@ void run(args.ArgResults $commandResults) {
   }
   String $filePath = $commandResults.rest[0];
   $filePath = sys.pathFullName($filePath);
-  String $projDir = sys.pathDirectoryName($filePath);
+  String $projDir = sys.pathDirectoryName(sys.pathDirectoryName($filePath));
   String $cwd = sys.getCwd();
   sys.setCwd($projDir);
 
