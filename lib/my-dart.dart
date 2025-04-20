@@ -59,6 +59,9 @@ void run(args.ArgResults $commandResults) {
 
   sys.setCwd(sys.pathDirectoryName($projDir));
   winsys.tryCommand('dart', ['pub', 'get']);
+  for (int i=0; i<generatedFiles.length; i++) {
+    io.File(generatedFiles[i]).deleteSync();
+  }
   winsys.tryCommand('dart', ['run', 'build_runner', 'build']);
   sys.setCwd($cwd);
   int $exitCode = winsys.command('dart', $commandResults.rest.toList());
