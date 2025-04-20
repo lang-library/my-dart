@@ -47,15 +47,15 @@ void run(args.ArgResults $commandResults) {
   }
   String $filePath = $commandResults.rest[0];
   $filePath = sys.pathFullName($filePath);
-  String $projDir = sys.pathDirectoryName($filePath);
+  String $libDir = sys.pathDirectoryName($filePath);
   String $cwd = sys.getCwd();
-  sys.setCwd($projDir);
-  //dump($projDir, r'$projDir');
+  sys.setCwd($libDir);
   List<String> $generatedFiles = sys.pathFiles('.');
-  //dump(generatedFiles, 'generatedFiles');
   $generatedFiles = $generatedFiles.where(($x) => $x.endsWith('.g.dart')).toList();
-  //dump(generatedFiles, 'generatedFiles');
-  sys.setCwd(sys.pathDirectoryName($projDir));
+  sys.setCwd(sys.pathDirectoryName($libDir));
+  if (!sys.fileExists('pubspec.yaml')) {
+    winsys.tryCommand('pubspec-gen', []);
+  }
   winsys.tryCommand('dart', ['pub', 'get']);
   for (int $i=0; $i<$generatedFiles.length; $i++) {
     io.File($generatedFiles[$i]).deleteSync();
