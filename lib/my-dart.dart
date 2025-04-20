@@ -57,6 +57,7 @@ void run(args.ArgResults $commandResults) {
   generatedFiles = generatedFiles.where(($x) => $x.endsWith('.g.dart')).toList();
   dump(generatedFiles, 'generatedFiles');
 
+  sys.setCwd(sys.pathDirectoryName($projDir));
   winsys.tryCommand('dart', ['pub', 'get']);
   sys.setCwd($cwd);
   int $exitCode = winsys.command('dart', $commandResults.rest.toList());
