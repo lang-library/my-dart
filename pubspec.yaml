@@ -1,28 +1,19 @@
 name: my_dart
-description: A sample command-line application
-version: 0.0.1
-publish_to: none
+description: my_dart package project
+version: 2025.420.702
+homepage:
+repository: https://github.com/dart-pkg/my_dart
 
 environment:
   sdk: ^3.7.2
 
 dependencies:
-  args: ^2.5.0
-  ffi: ^2.1.4
-  path: ^1.9.1
-  win32: ^5.12.0
-  embed_annotation: ^1.2.2
-  logger: ^2.5.0
-  output: ^1.0.0
-  sys: ^0.0.2
-  winsys: ^0.0.1
-#  misc:
-#    git:
-#      url: https://github.com/lang-library/dart-misc
-#      ref: 2025.0418.0319
+  args: ^2.7.0
+  output: ^1.0.1
+  sys: ^2025.420.1441
+  winsys: ^2025.420.1442
 
 dev_dependencies:
-  build_runner: ^2.4.15
-  embed: ^1.4.1
   lints: ^5.1.1
-  test: ^1.25.15
+  embed: ^1.4.1
+  build_runner: ^2.4.15
