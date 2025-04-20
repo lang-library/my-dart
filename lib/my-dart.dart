@@ -53,7 +53,7 @@ void run(args.ArgResults $commandResults) {
 
   dump($projDir, r'$projDir');
   List<String> generatedFiles = sys.pathFiles('.');
-  dump(generatedFiles, 'generatedFiles');
+  //dump(generatedFiles, 'generatedFiles');
   generatedFiles = generatedFiles.where(($x) => $x.endsWith('.g.dart')).toList();
   dump(generatedFiles, 'generatedFiles');
 
