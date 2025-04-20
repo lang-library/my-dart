@@ -52,6 +52,7 @@ void run(args.ArgResults $commandResults) {
   sys.setCwd($projDir);
 
   List<String> generatedFiles = sys.pathDirectories('./lib');
+  dump(generatedFiles, 'generatedFiles');
   generatedFiles = generatedFiles.where(($x) => $x.endsWith('.g.dart')).toList();
   dump(generatedFiles, 'generatedFiles');
 
