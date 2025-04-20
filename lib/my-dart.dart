@@ -50,6 +50,11 @@ void run(args.ArgResults $commandResults) {
   String $projDir = sys.pathDirectoryName($filePath);
   String $cwd = sys.getCwd();
   sys.setCwd($projDir);
+
+  List<String> generatedFiles = sys.pathDirectories('./lib');
+  generatedFiles = generatedFiles.where(($x) => $x.endsWith('.g.dart')).toList();
+  dump(generatedFiles, 'generatedFiles');
+
   winsys.tryCommand('dart', ['pub', 'get']);
   sys.setCwd($cwd);
   int $exitCode = winsys.command('dart', $commandResults.rest.toList());
